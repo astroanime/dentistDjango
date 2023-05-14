@@ -207,16 +207,6 @@ Teeth
                   <th scope="col">Price</th>
                 </tr>
               </thead>
-              <tbody>
-                {% for item in servise_list %}
-                <tr>
-                  <th scope="row">{{ item.service.name }}</th>
-                  <td>{{ item.service.quantity }}</td>
-                  <td>{{ item.service.price }}</td>
-                  
-                </tr>
-              </tbody>
-              {% endfor %}
             </table>
           </div>
         </div>
@@ -253,30 +243,6 @@ Teeth
       </div>
 
       <div class="row">
-      {% for item in doctor_list %}
-        <!-- Single Dentist Area -->
-        <div class="col-12 col-sm-6 col-md-4">
-          <div class="single-dentist-area mb-100">
-          {% if item.doc.image %}
-            <img src="{{ item.doc.image.url }}" alt="">
-          {% endif %}
-            <!-- Dentist Content -->
-            <div class="dentist-content">
-              <!-- Social Info -->
-              <div class="dentist-social-info">
-                <a href="{{ item.doc.f_link }}"><i class="fa fa-facebook"></i></a>
-                <a href="{{ item.doc.i_link }}"><i class="fa fa-twitter"></i></a>
-                <a href="{{ item.doc.g_link }}"><i class="fa fa-google-plus"></i></a>
-              </div>
-              <!-- Dentist Info -->
-              <div class="dentist-info bg-gradient-overlay">
-                <h5>{{ item.doc.name }}</h5>
-                <p>{{ item.doc.proffesion }}</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      {% endfor %}
       </div>
     </div>
   </section>

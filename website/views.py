@@ -32,15 +32,7 @@ def regis(request):
 	context = {'form':form}
 	return render(request, 'auth/regis.html', context)
 def home(request):
-    services= Servise.objects.all()
-    servises = []
-    for service in services:
-        servises.append({"service": service})
-    doctors= Doctor.objects.all()
-    doctor_list = []
-    for doc in doctors:
-        doctor_list.append({"doc": doc})
-    return render(request, "home.html", {"servise_list": servises,"doctor_list": doctor_list})
+    return render(request, "home.html", {})
 def userPage(request):
 	return render(request, 'UserPage.html', {})
 
