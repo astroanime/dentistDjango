@@ -32,10 +32,6 @@ def regis(request):
 	context = {'form':form}
 	return render(request, 'auth/regis.html', context)
 def home(request):
-    offers= Offer.objects.all()
-    offerss= []
-    for offer in offers:
-        offerss.append({"service": offer})
     services= Servise.objects.all()
     servises = []
     for service in services:
@@ -44,7 +40,7 @@ def home(request):
     doctor_list = []
     for doc in doctors:
         doctor_list.append({"doc": doc})
-    return render(request, "home.html", {"servise_list": servises,"doctor_list": doctor_list, "offer_list": offerss})
+    return render(request, "home.html", {"servise_list": servises,"doctor_list": doctor_list})
 def userPage(request):
 	return render(request, 'UserPage.html', {})
 

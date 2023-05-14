@@ -169,20 +169,6 @@ Teeth
               <h2>Our Services</h2>
               <div class="line"></div>
             </div>
-
-            <div class="row">
-              {% for item in offer_list %}
-              <!-- Single Service -->
-              <div class="col-6 col-md-4">
-                <div class="single-service mb-70">
-                  {% if item.service.cover %}
-                    <img src="{{ item.service.cover.url }}" alt="">
-                  {% endif %}
-                  <a href="{% url 'service'%}" style="color:white;font-size:20px">{{ item.service.name }}</a>
-                </div>
-              </div>
-              {% endfor %}
-            </div>
           </div>
         </div>
 
