@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+
+{% block heading %}Profile{% endblock %}
+
+{% block content %}
+
+<style>
+.flexrow { display: flex;
+           border: 2px black;
+}
+.flexrow > div { flex: 1; }
+.vl {
+  border-left: 6px solid white;
+  height: 500px;
+  width: 10px;
+}
+
+</style>
+  <div class="flexrow" >
+      <section class='dento-service-area section-padding-100-0 bg-img bg-gradient-overlay jarallax clearfix'>
+        <h1 style='margin-left:100px'>
+            User Information <br>
+        </h1>
+        <img src="{{ user.profile.image.url }}" style='height:270px;width:300px;margin-left:100px' alt="">
+        <h2 style='margin-left:100px;color:white;'>
+            Username: {{ request.user.username }} <br>
+            ID: {{ request.user.id }}<br>
+            Date Joined: {{ request.user.date_joined }} <br>
+            Email: {{ request.user.email }}<br>
+            Last Login: {{ request.user.last_login }}<br>
+        </h2>
+      </section>
+      <div class="vl">
+      </div>
+      <section class='dento-service-area section-padding-100-0 bg-img bg-gradient-overlay jarallax clearfix'>
+      </section>
+      <section class='dento-service-area section-padding-100-0 bg-img bg-gradient-overlay jarallax clearfix'>
+        <section class="dento-pricing-table-area mt-50 section-padding-0-100">
+          <div class="container">
+            <div class="row">
+              <div class="col-12">
+                <div class="dento-price-table table-responsive">
+                  <table class="table table-borderless mb-0">
+                    <thead>
+                      <tr>
+                        <th scope="col" style="width:200%">Service Names</th>
+                        <th scope="col" style="width:200%">Quantity</th>
+                        <th scope="col" style="width:200%">Price</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                  {% for service in request.session.added_services %}
+                      <tr>
+                        <th scope="row"><h2 style='margin-left:10px'>
+                          {{service.0}} <br>
+                        </h2></th>
+                        <td><h2 style='margin-left:10px'>
+                          {{service.1}} <br>
+                        </h2></td>
+                        <td><h2 style='margin-left:10px'>
+                          {{service.2}} <br>
+                        </h2></td>
+                      </tr>
+                  {% empty %}
+                  <tr>
+                    <th scope="row"><h2 style='margin-left:10px'>
+                      NO data <br>
+                    </h2></th>
+                    <td><h2 style='margin-left:10px'>
+                      NO data<br>
+                    </h2></td>
+                    <td><h2 style='margin-left:10px'>
+                      NO data<br>
+                    </h2></td>
+                  </tr>
+                    </tbody>
+                  {% endfor %}
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </section>
+  </div>
+{% endblock %}

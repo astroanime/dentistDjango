@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>All Appointments</title>
+</head>
+<body>
+	<form method="POST">
+		{% for Appointment in Appointment_list %}
+		<h2>{{Appointment}}</h2>
+		{% endfor %}
+	<button type="submit">Save</button>
+	</form>
+</body>
+</html>

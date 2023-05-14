@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} About Dr.Abdrahmanova Bibigul {% endblock %}
+{% block meta_description %} This is the website of Dr.Abdrahmanova Bibigul DMD the greatest dentist{% endblock %}
+
+{% block content %}
+    <div style="display:flex;flex-direction:row;width:70%;margin-top:3%">
+        <div class='col-12 col-md-6' style="margin-left:10%;margin-right:5%;width:50%">
+            <span class="text-info">Article: </span> <span>{{ article.name }}</span>
+            <hr style='width:50%;'>
+            <span class="text-info">Publication Date: </span><span>{{ article.date_created }}</span>
+            {% if article.image %}
+                    <img src="{{ article.image.url }}" style="height:512px;width:450px">
+                    <br>
+            {% endif %}
+        </div>
+      {% if not reviews %}
+            <hr>
+            {% if user.is_authenticated %}
+                  <h3>Be the first one to write a review.</h3>
+            {% endif %}
+      {% else %}
+        <div class='col-12 col-md-6' style='margin-right:5%;margin-top:4%'>
+                <h3>Review Comments</h3>
+                <ul>
+                {% for review in reviews %}
+                    <li class="list-group-item">
+                            <span class="text-info">Comment: </span> <span>{{ review.content }}</span>
+                            <br>
+                            <span class="text-info">Created on: </span><span>{{ review.date_created }}</span>
+                            <br>
+                            <span class="text-info">Rating: </span><span class="badge badge-secondary badge-pill">{{ review.rating }}</span>
+                            <br>
+                            <span class="text-info">Creator: </span><span>{{ review.creator.username }}</span>
+                            <br>
+                    </li>
+                {% endfor %}
+                </ul>
+        {% endif %}
+        {% if user.is_authenticated %}
+                <a class="btn btn-primary" href="{% url 'review_create' article.pk %}">Add Comment</a>
+        {% endif %}
+        </div>
+    </div>
+
+{% endblock%}
